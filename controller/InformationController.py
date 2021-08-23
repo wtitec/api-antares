@@ -1,5 +1,6 @@
 import json
 from flask import request, Response, jsonify
+from flask_cors import CORS
 
 class InformationController:
 

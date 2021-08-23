@@ -11,3 +11,4 @@ pycparser==2.20
 PyJWT==2.1.0
 toml==0.10.2
 Werkzeug==2.0.1
+flask-cors=3.0.10
