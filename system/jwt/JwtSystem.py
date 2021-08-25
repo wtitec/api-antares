@@ -18,7 +18,7 @@ class JwtSystem:
                     'Bearer ', '')
 
             if not token:
-                return jsonify({'message': 'a valid token is missing'}),400
+                return jsonify({'message': 'a valid token is missing', 'data': str(request.headers)}),400
 
             try:
                 data = jwt.decode(
