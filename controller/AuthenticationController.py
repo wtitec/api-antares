@@ -22,7 +22,7 @@ class AuthenticationController:
                 lusers = list(db.users.find({"email":auth.username}))
 
 
-                if auth.username == lusers[0]['email'] and password == lusers[0]['password']:
+                if auth.username == lusers[0]['email'] and password == lusers[0]['password'] and len(lusers) > 0:
                     token = JwtSystem.create_token(auth.username)
                     return jsonify({
                         'token': token,
