@@ -24,12 +24,17 @@ class AuthenticationController:
                 if len(lusers) > 0:
                     if auth.username == lusers[0]['email'] and password == lusers[0]['password']:
                         token = JwtSystem.create_token(auth.username)
+                        if 'avatar' in lusers[0]:
+                            avatar = lusers[0]['avatar']
+                        else:
+                            avatar = "https://lh3.googleusercontent.com/proxy/Mcr4Cry35DGvL10b13kzEGoHuiXeCIBstVDk_gmafShjvOYdvZ8K3_yX6Lbh17szb_42UQg6mG_J1wouVx5JTfxUohIQl1wUQbsAx3GDV-TFLni38Ig"
+                        
                         return jsonify({
                             'token': token,
                             'name': lusers[0]['name'],
                             'email': lusers[0]['email'],
                             'dev': lusers[0]['dev'],
-                            'avatar': lusers[0]['avatar']
+                            'avatar': avatar
                         })
                 
                 return Response(json.dumps({'code': 1, 'status': False}), status=401, mimetype='application/json')
