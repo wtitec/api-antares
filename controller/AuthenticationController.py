@@ -27,7 +27,7 @@ class AuthenticationController:
                         if 'avatar' in lusers[0]:
                             avatar = lusers[0]['avatar']
                         else:
-                            avatar = "https://lh3.googleusercontent.com/proxy/Mcr4Cry35DGvL10b13kzEGoHuiXeCIBstVDk_gmafShjvOYdvZ8K3_yX6Lbh17szb_42UQg6mG_J1wouVx5JTfxUohIQl1wUQbsAx3GDV-TFLni38Ig"
+                            avatar = "https://mbalit.co.uk/wp-content/uploads/2018/02/blank-head.png"
                         
                         return jsonify({
                             'token': token,
