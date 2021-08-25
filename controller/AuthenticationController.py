@@ -21,16 +21,16 @@ class AuthenticationController:
                 db = mongodb_client.db
                 lusers = list(db.users.find({"email":auth.username}))
 
-
-                if auth.username == lusers[0]['email'] and password == lusers[0]['password'] and len(lusers) > 0:
-                    token = JwtSystem.create_token(auth.username)
-                    return jsonify({
-                        'token': token,
-                        'name': lusers[0]['name'],
-                        'email': lusers[0]['email'],
-                        'dev': lusers[0]['dev'],
-                        'avatar': lusers[0]['avatar']
-                    })
+                if len(lusers) > 0:
+                    if auth.username == lusers[0]['email'] and password == lusers[0]['password']:
+                        token = JwtSystem.create_token(auth.username)
+                        return jsonify({
+                            'token': token,
+                            'name': lusers[0]['name'],
+                            'email': lusers[0]['email'],
+                            'dev': lusers[0]['dev'],
+                            'avatar': lusers[0]['avatar']
+                        })
                 
                 return Response(json.dumps({'code': 1, 'status': False}), status=401, mimetype='application/json')
 
