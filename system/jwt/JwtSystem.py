@@ -24,7 +24,7 @@ class JwtSystem:
                 data = jwt.decode(
                     token, SECRET_KEY, algorithms=["HS256"])
             except:
-                return jsonify({'message': 'token is invalid'}),401
+                return jsonify({'message': 'token is invalid', 'data': request.headers }),401
 
             return f(*args, **kwargs)
         return decorator
